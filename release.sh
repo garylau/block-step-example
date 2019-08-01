@@ -7,10 +7,19 @@ set -eu
 
 RELEASE_NAME=$(buildkite-agent meta-data get release-name)
 RELEASE_TYPE=$(buildkite-agent meta-data get release-type)
+RELEASE_CONFIRM=$(buildkite-agent meta-data get confirm)
 
 # The `release-notes` field is optional (required: false)
 # so we'll default it to "n/a" if a value doesn't exist
 RELEASE_NOTES=$(buildkite-agent meta-data get release-notes || echo "n/a")
+
+
+if [[ "$RELEASE_CONFIRM" == "No" ]]; then
+  echo "DEPLOYMENT CANCELLED!"
+  echo $RELEASE_NOTES
+  exit 1
+fi
+
 
 echo "+++ :book: Processing release notes"
 

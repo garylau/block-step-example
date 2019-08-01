@@ -17,5 +17,12 @@ steps:
           value: "beta"
         - label: "Stable"
           value: "stable"
+     - select: "Are you sure you're cool to deploy this release?"
+       key: "confirm"
+       default: "Yes"
+       options:
+         - Yes
+         - No
+
   - command: release.sh
     label: ":rocket:"
