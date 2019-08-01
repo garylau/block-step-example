@@ -16,7 +16,7 @@ RELEASE_NOTES=$(buildkite-agent meta-data get release-notes || echo "n/a")
 
 if [[ "$RELEASE_CONFIRM" == "No" ]]; then
   echo "DEPLOYMENT CANCELLED!"
-  echo $RELEASE_NOTES
+  echo "$BUILDKITE_UNBLOCKER says: $RELEASE_NOTES"
   exit 1
 fi
 
