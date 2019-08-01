@@ -21,8 +21,10 @@ steps:
         key: "confirm"
         default: "Yes"
         options:
-          - Yes
-          - No
+        - label: "Yes"
+          value: "Yes"
+        - label: "No"
+          value: "No"
 
   - command: release.sh
     label: ":rocket:"
